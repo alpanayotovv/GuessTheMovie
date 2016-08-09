@@ -5,11 +5,11 @@
 		.module('app.core')
 		.controller('GameCtrl', GameCtrl);
 
-	GameCtrl.$inject = ['$scope', '$ionicModal', 'gameService', 'storageService', 'teamService'];
+	GameCtrl.$inject = ['$scope', '$ionicModal', 'gameService', 'storageService', 'teamService', 'currentGame'];
 
-	function GameCtrl($scope, $ionicModal, gameService, storageService, teamService) {
+	function GameCtrl($scope, $ionicModal, gameService, storageService, teamService, currentGame) {
 		var vm             = this;
-		vm.currentGame     = {};
+		vm.currentGame     = currentGame;
 		vm.teamName;
 		vm.start           = start;
 		vm.end             = end;
@@ -32,8 +32,6 @@
 		////////////////
 
 		function activate() {
-			setCurrentGame();
-
 			$ionicModal.fromTemplateUrl('js/team/add-team.html', {
 				scope: $scope,
 				animation: 'slide-in-up'
@@ -58,12 +56,12 @@
 		
 		function start() {
 			gameService.start(vm.currentGame);
-			setCurrentGame();
+			updateCurrentGame();
 		};
 
 		function end() {
 			gameService.end(vm.currentGame);
-			setCurrentGame();
+			updateCurrentGame();
 		};
 
 		function openModal(modal){
@@ -82,12 +80,12 @@
 
 			gameService.addTeam(vm.currentGame, vm.teamName);
 			closeModal(vm.newTeamModal);
-			setCurrentGame();
+			updateCurrentGame();
 		};
 
 		function removeTeam(index) {
 			gameService.removeTeam(vm.currentGame, index);
-			setCurrentGame();
+			updateCurrentGame();
 		};
 
 		function editTeam(index) {
@@ -100,7 +98,7 @@
 			teamService.updateTeam(vm.currentTeamData.team.name, vm.currentTeamData.team.score + vm.pointsToAdd, vm.currentTeamData.index);
 			closeModal(modal);
 			vm.pointsToAdd = 0;
-			setCurrentGame();
+			updateCurrentGame();
 		};
 
 		function addPoints(index) {
@@ -109,7 +107,7 @@
 			vm.currentTeamData.index = index;
 		};
 
-		function setCurrentGame() {
+		function updateCurrentGame() {
 			storageService.getGame().then( function(game){
 				vm.currentGame = game;
 			});

@@ -31,7 +31,10 @@
 				abstract: true,
 				templateUrl: 'templates/menu.html',
 				controller: 'GameCtrl',
-				controllerAs: 'vm'
+				controllerAs: 'vm',
+				resolve: {
+					currentGame: getCurrentGame
+				}
 			})
 			.state('app.index', {
 				url: '',
@@ -52,5 +55,13 @@
 
   		$urlRouterProvider.otherwise('/app/index');
 	};
+
+	getCurrentGame.$inject = ['storageService'];
+	
+	function getCurrentGame(storageService) {
+		return storageService.getGame().then( function(game){
+			return game;
+		});
+	}
 
 })();
