@@ -1,0 +1,78 @@
+<ion-view view-title="Game" class="background-overlay">
+	<ion-content>
+		<div ng-if="!vm.currentGame.started && vm.currentGame.teams" class="games-stats">
+			
+			<div class="row">
+				<div class="col">
+					<h1>Final Score</h1>
+				</div><!-- /.col -->
+			</div><!-- /.row -->
+
+			<ion-list type="list-inset">
+				<ion-item ng-repeat="team in vm.currentGame.teams | orderBy: '-score' track by $index">
+					<h3>
+						<span ng-if="$first && team.score != 0" class="ion-trophy"></span>
+						<strong ng-bind="team.name"></strong>
+						<span>Score: <span ng-bind="team.score"></span></span>
+					</h3>
+				</ion-item>
+			</ion-list>	
+
+		</div><!-- /.games-stats -->
+		
+		<div class="row">
+			<div class="col">
+				<button ng-if="!vm.currentGame.started" ng-click="vm.start()" class="button button-block button-calm">
+					Start New Game
+				</button>	
+			</div><!-- /.col -->
+		</div><!-- /.row -->
+
+	
+		<div ng-if="vm.currentGame.started" class="current-game-container">
+
+			<ion-list ng-if="vm.currentGame.teams" type="list-inset">
+				<ion-item ng-repeat="team in vm.currentGame.teams track by $index">
+					<h3>
+						<strong ng-bind="team.name"></strong>
+						<span>Current score: <span ng-bind="team.score"></span></span>
+					</h3>
+
+					<ion-option-button class="button-positive" ng-click="vm.addPoints($index)">
+						Add Points
+					</ion-option-button>
+					
+					<ion-option-button class="button-calm" ng-click="vm.editTeam($index)">
+						Edit
+					</ion-option-button>
+					
+					<ion-option-button class="button-assertive ion-close-circled" ng-click="vm.removeTeam($index)">
+    				</ion-option-button>
+				</ion-item>
+				
+				<ion-item ng-if="!vm.currentGame.teams.length">
+					<h3>Add a team to start!</h3>
+				</ion-item>
+			</ion-list>
+			
+			<div class="row">
+				<div class="col">
+					<button class="button button-block button-calm ion-android-contacts" ng-click="vm.openModal(vm.newTeamModal)">
+						Add Team
+					</button>
+				</div><!-- /.col -->
+			</div><!-- /.row -->
+			
+		</div><!-- /.current-game-container -->
+		
+		<div class="row">
+			<div class="col">
+				<button ng-if="vm.currentGame.started" ng-click="vm.end()" class="button button-block button-assertive">
+					End Game
+				</button>	
+			</div><!-- /.col -->
+		</div><!-- /.row -->
+		
+	</ion-content>
+
+</ion-view>

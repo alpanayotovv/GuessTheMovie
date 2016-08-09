@@ -1,0 +1,13 @@
+.menu-wrapper,
+.scroll-content {  background-color: rgba(255,255,255,0.5); }
+.menu .scroll-content { background: #fff url(../img/side-bg.jpg) no-repeat center center; background-size: cover; }
+
+.item,
+.item-complex .item-content, .item-radio .item-content { background-color: transparent; color: #000; }
+.background-overlay { background: url(../img/bg.jpg); background-position: center center; }
+
+.item  { border-color: #aeaeae; }
+
+.current-game-container h3 { font-size: 16px; }
+.current-game-container h3 span { font-weight: normal; font-size: 12px; float: right; }
+.current-game-container h3 span span { margin-left: 5px; }

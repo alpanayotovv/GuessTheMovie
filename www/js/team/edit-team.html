@@ -1,0 +1,36 @@
+<ion-modal-view>
+	<ion-header-bar>
+		<h1 class="title">Edit Team</h1>
+	</ion-header-bar>
+	
+	<ion-content>
+		<div class="row">
+			<div class="col">
+				<label class="item item-input">
+					<input type="text" ng-model="vm.currentTeamData.team.name">
+				</label>
+			</div><!-- /.col -->
+		</div><!-- /.row -->
+
+		<div class="row">
+			<div class="col">
+				<label class="item item-input">
+					<input type="number" ng-model="vm.currentTeamData.team.score">
+				</label>
+			</div><!-- /.col -->
+		</div><!-- /.row -->
+		
+		<div class="row">
+			<div class="col">
+				<button ng-click="vm.updateTeam(vm.editTeamModal);" class="button button-block button-calm">Save</button>
+			</div><!-- /.col -->
+
+			<div class="col">
+				<button ng-click="vm.closeModal(vm.editTeamModal)" class="button button-block button-assertive">Cancel</button>
+			</div><!-- /.col -->
+
+		</div><!-- /.row -->
+		
+	</ion-content>
+
+</ion-modal-view>

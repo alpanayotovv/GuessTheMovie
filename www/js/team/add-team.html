@@ -1,0 +1,26 @@
+<ion-modal-view>
+	<ion-header-bar>
+		<h1 class="title">Add Team</h1>
+	</ion-header-bar>
+	
+	<ion-content>
+		<div class="row">
+			<div class="col">
+				<label class="item item-input">
+					<input type="text" placeholder="Team Name" ng-model="vm.teamName">
+				</label>
+			</div><!-- /.col -->
+		</div><!-- /.row -->
+		
+		<div class="row">
+			<div class="col">
+				<button ng-click="vm.addTeam()" class="button button-block button-calm">Add Team</button>
+			</div><!-- /.col -->
+			
+			<div class="col">
+				<button ng-click="vm.closeModal(vm.newTeamModal)" class="button button-block button-assertive">Cancel</button>
+			</div><!-- /.col -->			
+		</div><!-- /.row -->		
+	</ion-content>
+
+</ion-modal-view>
