@@ -44,25 +44,55 @@
 					}
 				}
 			})
+			.state('app.add-team', {
+				url: '/add-team',
+				views: {
+					'menuContent': {
+						templateUrl: 'js/team/add-team.html',
+						controller: 'TeamCtrl',
+						controllerAs: 'vm'
+					}
+				},
+			})
+			.state('app.edit-team', {
+				url: '/edit-team:teamId',
+				views: {
+					'menuContent': {
+						templateUrl: 'js/team/edit-team.html',
+						controller: 'TeamCtrl',
+						controllerAs: 'vm'
+					}
+				},
+			})
+			.state('app.add-points', {
+				url: '/add-points:teamId',
+				views: {
+					'menuContent': {
+						templateUrl: 'js/team/add-points.html',
+						controller: 'TeamCtrl',
+						controllerAs: 'vm'
+					}
+				},
+			})
 			.state('app.search', {
 				url: '/search',
 				views: {
 					'menuContent': {
-						templateUrl: 'js/search/search.html'
+						templateUrl: 'js/search/search.html',
+						controller: 'SearchCtrl',
+						controllerAs: 'vm'
 					}
 				},
-				controller: 'SearchCtrl',
-				controllerAs: 'vm'
 			})
 			.state('app.settings', {
 				url: '/settings',
 				views: {
 					'menuContent': {
-						templateUrl: 'js/search/search.settings.html'
+						templateUrl: 'js/search/search.settings.html',
+						controller: 'SettingsCtrl',
+						controllerAs: 'vm'
 					}
-				},
-				controller: 'SettingsController',
-				controllerAs: 'vm'
+				}
 			})
 
   		$urlRouterProvider.otherwise('/app/index');

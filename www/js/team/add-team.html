@@ -1,7 +1,4 @@
-<ion-modal-view>
-	<ion-header-bar>
-		<h1 class="title">Add Team</h1>
-	</ion-header-bar>
+<ion-view view-title="Add Team">
 	
 	<ion-content>
 		<div class="row">
@@ -18,9 +15,9 @@
 			</div><!-- /.col -->
 			
 			<div class="col">
-				<button ng-click="vm.closeModal(vm.newTeamModal)" class="button button-block button-assertive">Cancel</button>
+				<button ui-sref="app.index" class="button button-block button-assertive">Cancel</button>
 			</div><!-- /.col -->			
 		</div><!-- /.row -->		
 	</ion-content>
 
-</ion-modal-view>
+</ion-view>

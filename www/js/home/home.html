@@ -38,11 +38,11 @@
 						<span>Current score: <span ng-bind="team.score"></span></span>
 					</h3>
 
-					<ion-option-button class="button-positive" ng-click="vm.addPoints($index)">
+					<ion-option-button class="button-positive" ui-sref="app.add-points({teamId: $index})">
 						Add Points
 					</ion-option-button>
 					
-					<ion-option-button class="button-calm" ng-click="vm.editTeam($index)">
+					<ion-option-button class="button-calm" ui-sref="app.edit-team({teamId: $index})">
 						Edit
 					</ion-option-button>
 					
@@ -57,7 +57,7 @@
 			
 			<div class="row">
 				<div class="col">
-					<button class="button button-block button-calm ion-android-contacts" ng-click="vm.openModal(vm.newTeamModal)">
+					<button class="button button-block button-calm ion-android-contacts" ui-sref="app.add-team">
 						Add Team
 					</button>
 				</div><!-- /.col -->

@@ -1,28 +1,24 @@
-<ion-modal-view>
-	<ion-header-bar>
-		<h1 class="title">Add Points for <span ng-bind="vm.currentTeamData.team.name"></span></h1>
-	</ion-header-bar>
-	
+<ion-view view-title="Add Points">
 	<ion-content>
 		<div class="row">
 			<div class="col">
 				<label class="item item-input">
-					<input type="number" ng-model="vm.pointsToAdd">
+					<input type="number" ng-model="vm.points">
 				</label>
 			</div><!-- /.col -->
 		</div><!-- /.row -->
 		
 		<div class="row">
 			<div class="col">
-				<button ng-click="vm.updateTeam(vm.addPointsModal);" class="button button-block button-calm">Add Scores</button>
+				<button ng-click="vm.addPoints();" class="button button-block button-calm">Add Scores</button>
 			</div><!-- /.col -->
 
 			<div class="col">
-				<button ng-click="vm.closeModal(vm.addPointsModal)" class="button button-block button-assertive">Cancel</button>
+				<button ui-sref="app.index" class="button button-block button-assertive">Cancel</button>
 			</div><!-- /.col -->
 
 		</div><!-- /.row -->
 		
 	</ion-content>
 
-</ion-modal-view>
+</ion-view>

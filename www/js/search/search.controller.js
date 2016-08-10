@@ -17,7 +17,7 @@
 		activate();
 
 		////////////////
-
+		alert(1);
 		function activate() {
 			searchSettingsService.get().then( function(settings){
 				vm.searchSettings = settings;

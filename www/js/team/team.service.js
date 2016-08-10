@@ -9,7 +9,8 @@
 
 	function teamService(storageService) {
 		var teamService = {
-			updateTeam: update
+			updateTeam: update,
+			getTeam: get
 		};
 
 		return teamService;
@@ -24,6 +25,12 @@
 				game.teams[index].score = score;
 
 				storageService.setGame(game);
+			});
+		}
+
+		function get(index){
+			return storageService.getGame().then( function(game){
+				return game.teams[index];
 			});
 		}
 	}

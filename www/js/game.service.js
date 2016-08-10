@@ -15,21 +15,23 @@
 			start: start,
 			end: end,
 			removeTeam: removeTeam,
-			getGame: getGame,
+			getGame: getGame
 		};
 		
 		return gameService;
 
 		////////////////
 
-		function addTeam(game, teamName) {
-			var team = {
-				name: teamName,
-				score: parseInt(0)
-			};
+		function addTeam(teamName) {
+			getGame().then( function(game){
+				var team = {
+					name: teamName,
+					score: parseInt(0)
+				};
 
-			game.teams.push(team);
-			setGame(game);
+				game.teams.push(team);
+				setGame(game);
+			});
 		};
 
 		function start(game){
@@ -42,14 +44,16 @@
 			setGame(game);
 		}
 
-		function removeTeam(game, teamIndex) {
-			game.teams.splice(teamIndex, 1);
-			setGame(game);
+		function removeTeam(teamIndex) {
+			getGame().then( function(game){
+				game.teams.splice(teamIndex, 1);
+				setGame(game);
+			});
 		};
 
 		function getGame() {
 			return storageService.getGame().then(function(game){
-				return game.data;
+				return game;
 			});
 		};
 

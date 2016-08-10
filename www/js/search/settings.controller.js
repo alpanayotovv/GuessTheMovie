@@ -3,12 +3,11 @@
 
 	angular
 		.module('app.core')
-		.controller('SettingsController', SettingsController);
+		.controller('SettingsCtrl', SettingsCtrl);
 
-	SettingsController.$inject = ['dependencies'];
+	SettingsCtrl.$inject = ['dependencies'];
 
-	/* @ngInject */
-	function SettingsController(dependencies) {
+	function SettingsCtrl(dependencies) {
 		var vm = this;
 
 		activate();
