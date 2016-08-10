@@ -44,13 +44,25 @@
 					}
 				}
 			})
-			.state('app.find-movie', {
-				url: '/find-movie',
+			.state('app.search', {
+				url: '/search',
 				views: {
 					'menuContent': {
-						templateUrl: 'js/find-movie/find-movie.html'
+						templateUrl: 'js/search/search.html'
 					}
-				}
+				},
+				controller: 'SearchCtrl',
+				controllerAs: 'vm'
+			})
+			.state('app.settings', {
+				url: '/settings',
+				views: {
+					'menuContent': {
+						templateUrl: 'js/search/search.settings.html'
+					}
+				},
+				controller: 'SettingsController',
+				controllerAs: 'vm'
 			})
 
   		$urlRouterProvider.otherwise('/app/index');
