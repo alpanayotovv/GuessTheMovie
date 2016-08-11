@@ -1,24 +1,28 @@
 <ion-view view-title="Find A Movie" class="background-overlay">
 
+	<ion-nav-bar class="bar-calm">
+		<ion-nav-buttons side="left">
+			<button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+			</button>
+		</ion-nav-buttons>
+
+		<ion-nav-buttons side="right">
+			<button class="button button-icon button-clear ion-ios-settings" ui-sref="app.settings"></button>
+		</ion-nav-buttons>
+	</ion-nav-bar>
+
 	<ion-content>
 
 		<div class="search-screen">
-
-			<button class="button" ui-sref="app.settings">Settings</button>
 			
-			<div class="row">
-				<div class="col">
-					<label class="item item-input">
-						<input type="text" ng-model="vm.phrase" placeholder="Search by keywords">
-					</label>
-				</div><!-- /.col -->	
-			</div><!-- /.row -->
+			<div class="list card">
+				<label class="item item-input">
+					<input type="text" ng-model="vm.phrase" placeholder="Search by keywords">
+				</label>
+			</div>
 
-			<div class="row">
-				<div class="col">
-					<button ng-click="vm.search()" class="button button-block button-calm">Search</button>
-				</div><!-- /.col -->
-			</div><!-- /.row -->
+			<button ng-click="vm.search()" class="button button-block button-calm">Search</button>
+
 
 			<div ng-if="vm.results" class="search-results">
 				
@@ -32,7 +36,7 @@
 					</div>
 
 					<div class="item item-image">
-						<img ng-src="{{movie.Poster}}">	
+						<img ng-if="movie.Poster != 'N/A'" ng-src="{{movie.Poster}}">	
 					</div>
 					
 				</div><!-- /.list card -->
@@ -45,7 +49,6 @@
 				</div><!-- /.search-failed -->
 
 			</div><!-- /.search-results -->
-
 			
 		</div><!-- /.search-screen -->
 

@@ -80,10 +80,7 @@
 					'menuContent': {
 						templateUrl: 'js/search/search.html',
 						controller: 'SearchCtrl',
-						controllerAs: 'vm',
-						resolve: {
-							settings: getSearchSettings
-						}
+						controllerAs: 'vm'
 					}
 				},
 			})
@@ -107,12 +104,6 @@
 		return storageService.getGame().then( function(game){
 			return game;
 		});
-	}
-
-	getSearchSettings.$inject = ['searchSettingsService'];
-
-	function getSearchSettings(searchSettingsService) {
-		return searchSettingsService.get();
-	}
+	};
 
 })();

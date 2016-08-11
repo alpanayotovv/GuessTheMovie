@@ -7,7 +7,6 @@
 
 	searchService.$inject = ['$http', '$httpParamSerializer'];
 
-	/* @ngInject */
 	function searchService($http, $httpParamSerializer) {
 		var END_POINT = 'http://www.omdbapi.com/?';
 		
