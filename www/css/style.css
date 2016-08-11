@@ -1,10 +1,13 @@
+.left { float: left; }
+.right { float: right; }
+
 .menu-wrapper,
 .scroll-content {  background-color: rgba(255,255,255,0.5); }
 .menu .scroll-content { background: #fff url(../img/side-bg.jpg) no-repeat center center; background-size: cover; }
 
 .item,
 .item-complex .item-content, .item-radio .item-content { background-color: transparent; color: #000; }
-.background-overlay { background: url(../img/bg.jpg); background-position: center center; }
+.background-overlay { background: url(../img/bg.jpg); background-position: center center; background-size: cover; }
 
 .item  { border-color: #aeaeae; }
 
