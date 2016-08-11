@@ -12,10 +12,9 @@
 		
 		vm.teamName;
 		vm.addTeam     = addTeam;
-		vm.removeTeam  = removeTeam;
 		vm.currentTeam = {};
 		vm.updateTeam  = updateTeam;
-		vm.addPoints  = addPoints;
+		vm.addPoints   = addPoints;
 		vm.points      = 0;
 
 		activate();
@@ -35,10 +34,6 @@
 
 			gameService.addTeam(vm.teamName);
 			$state.go('app.index');
-		};
-
-		function removeTeam() {
-
 		};
 
 		function updateTeam() {

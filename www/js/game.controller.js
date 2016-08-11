@@ -8,11 +8,11 @@
 	GameCtrl.$inject = ['gameService', 'currentGame'];
 
 	function GameCtrl(gameService, currentGame) {
-		var vm             = this;
-		vm.currentGame     = currentGame;
-		vm.start           = start;
-		vm.end             = end;
-		vm.removeTeam = removeTeam;
+		var vm         = this;
+		vm.currentGame = currentGame;
+		vm.start       = start;
+		vm.end         = end;
+		vm.removeTeam  = removeTeam;
 
 		function start() {
 			gameService.start(vm.currentGame);

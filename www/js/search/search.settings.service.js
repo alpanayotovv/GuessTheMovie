@@ -3,17 +3,17 @@
 
 	angular
 		.module('app.core')
-		.service('searchServiceSettings', searchServiceSettings);
+		.service('searchSettingsService', searchSettingsService);
 
-	searchServiceSettings.$inject = [];
+	searchSettingsService.$inject = [];
 
-	function searchServiceSettings() {
-		var vm = this;
-		vm.settings;
+	function searchSettingsService() {
+		var vm      = this;
+		vm.settings = {};
 
 		var settingsService = {
 			get : get,
-			set: set
+			set : set
 		};
 
 		return settingsService;
@@ -25,9 +25,7 @@
 		};
 
 		function get() {
-			var deferred = $q.defer();
-			deferred.resolve(vm.settings);
-			return deferred.promise;
+			return vm.settings;
 		};
 	}
 })();

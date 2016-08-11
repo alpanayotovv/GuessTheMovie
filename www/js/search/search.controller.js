@@ -5,23 +5,41 @@
 		.module('app.core')
 		.controller('SearchCtrl', SearchCtrl);
 
-	SearchCtrl.$inject = ['searchSettingsService'];
+	SearchCtrl.$inject = ['$ionicPopup', 'searchService', 'settings'];
 
-	function SearchCtrl(searchSettingsService) {
-		var vm            = this;
+	function SearchCtrl($ionicPopup, searchService, settings) {
+		var vm = this;
 		
-		vm.showSettings   = false;
-		vm.searchSettings = {};
-		vm.searchPhrase   = '';
+		vm.showSettings = false;
+		vm.settings     = settings;
+		vm.phrase       = '';
+		vm.results      = {};
+		vm.search       = search;
 
-		activate();
+		function search() {
+			if ( !vm.phrase ) {
+				$ionicPopup.alert({
+					title: 'Error',
+					content: 'Please enter some keywords.'
+				}).then(function(res) {
+					
+				});
 
-		////////////////
-		alert(1);
-		function activate() {
-			searchSettingsService.get().then( function(settings){
-				vm.searchSettings = settings;
+				return;
+			}
+
+			vm.settings.s = vm.phrase;
+
+			searchService.search(vm.settings).then( function(payload) {
+				if ( payload.Response === 'True' ) {
+					vm.results.success = true;
+					vm.results.entries = payload.Search;
+				} else {
+					vm.results.success = false;
+					vm.results.error = payload.Error;
+
+				}
 			});
-		}
+		};
 	}
 })();

@@ -29,18 +29,18 @@
 			.state('app', {
 				url: '',
 				abstract: true,
-				templateUrl: 'templates/menu.html',
-				controller: 'GameCtrl',
-				controllerAs: 'vm',
-				resolve: {
-					currentGame: getCurrentGame
-				}
+				templateUrl: 'templates/menu.html'
 			})
 			.state('app.index', {
 				url: '',
 				views: {
 					'menuContent': {
-						templateUrl: 'js/home/home.html'
+						templateUrl: 'js/home/home.html',
+						controller: 'GameCtrl',
+						controllerAs: 'vm',
+						resolve: {
+							currentGame: getCurrentGame
+						}
 					}
 				}
 			})
@@ -80,7 +80,10 @@
 					'menuContent': {
 						templateUrl: 'js/search/search.html',
 						controller: 'SearchCtrl',
-						controllerAs: 'vm'
+						controllerAs: 'vm',
+						resolve: {
+							settings: getSearchSettings
+						}
 					}
 				},
 			})
@@ -104,6 +107,12 @@
 		return storageService.getGame().then( function(game){
 			return game;
 		});
+	}
+
+	getSearchSettings.$inject = ['searchSettingsService'];
+
+	function getSearchSettings(searchSettingsService) {
+		return searchSettingsService.get();
 	}
 
 })();

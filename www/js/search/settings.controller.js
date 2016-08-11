@@ -5,9 +5,9 @@
 		.module('app.core')
 		.controller('SettingsCtrl', SettingsCtrl);
 
-	SettingsCtrl.$inject = ['dependencies'];
+	SettingsCtrl.$inject = [];
 
-	function SettingsCtrl(dependencies) {
+	function SettingsCtrl() {
 		var vm = this;
 
 		activate();

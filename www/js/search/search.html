@@ -1,7 +1,4 @@
 <ion-view view-title="Find A Movie" class="background-overlay">
-	<ion-header-bar>
-		<button>Test</button>
-	</ion-header-bar>
 
 	<ion-content>
 
@@ -12,16 +9,43 @@
 			<div class="row">
 				<div class="col">
 					<label class="item item-input">
-						<input type="text"  ng-model="vm.searchPhrase" placeholder="Search by keywords">
+						<input type="text" ng-model="vm.phrase" placeholder="Search by keywords">
 					</label>
 				</div><!-- /.col -->	
 			</div><!-- /.row -->
 
 			<div class="row">
 				<div class="col">
-					<button ng-click="" class="button button-block button-calm">Search</button>
+					<button ng-click="vm.search()" class="button button-block button-calm">Search</button>
 				</div><!-- /.col -->
 			</div><!-- /.row -->
+
+			<div ng-if="vm.results" class="search-results">
+				
+				<div class="list card" 
+					ng-if="vm.results.success"
+					ng-repeat="movie in vm.results.entries"
+				>
+					<div class="item item-divider" >
+						<p class="right" ng-bind="movie.Year"></p>	
+						<h2 ng-bind="movie.Title"></h2>
+					</div>
+
+					<div class="item item-image">
+						<img ng-src="{{movie.Poster}}">	
+					</div>
+					
+				</div><!-- /.list card -->
+				
+				<div ng-if="vm.results.error" class="search-failed">
+					<div class="card">
+						<div class="item item-text-wrap" ng-bind="vm.results.error">
+						</div>
+					</div>
+				</div><!-- /.search-failed -->
+
+			</div><!-- /.search-results -->
+
 			
 		</div><!-- /.search-screen -->
 
