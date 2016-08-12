@@ -94,6 +94,16 @@
 					}
 				}
 			})
+			.state('app.round', {
+				url: '/round',
+				views: {
+					'menuContent': {
+						templateUrl: 'js/round/round.html',
+						controller: 'RoundCtrl',
+						controllerAs: 'vm'
+					}
+				}
+			})
 
   		$urlRouterProvider.otherwise('/app/index');
 	};
