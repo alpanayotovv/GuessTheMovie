@@ -5,11 +5,10 @@
 		.module('app.core')
 		.service('searchSettingsService', searchSettingsService);
 
-	searchSettingsService.$inject = [];
+	searchSettingsService.$inject = ['$window'];
 
-	function searchSettingsService() {
-		var vm      = this;
-		vm.settings = {};
+	function searchSettingsService($window) {
+		var vm = this;
 
 		var settingsService = {
 			get : get,
@@ -21,11 +20,11 @@
 		////////////////
 
 		function set(settings) {
-			vm.settings = settings
+			$window.localStorage.setItem('movieSearchSettings', JSON.stringify(settings));
 		};
 
 		function get() {
-			return vm.settings;
+			return JSON.parse($window.localStorage.getItem('movieSearchSettings'));
 		};
 	}
 })();

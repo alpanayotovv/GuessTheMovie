@@ -36,7 +36,6 @@
 				} else {
 					vm.results.success = false;
 					vm.results.error   = payload.Error;
-
 				}
 			});
 		};

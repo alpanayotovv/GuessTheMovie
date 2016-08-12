@@ -8,10 +8,9 @@
 					Search For: 	
 				</div>
 
-				<ion-checkbox ng-model="vm.movie">Movie</ion-checkbox>
-				<ion-checkbox ng-model="vm.series">Series</ion-checkbox>
-				<ion-checkbox ng-model="vm.episode">Episode</ion-checkbox>
-				
+				<div ng-repeat="(key, value) in vm.types" style="text-transform: capitalize;">
+					<ion-checkbox ng-model="vm.types[key]">{{key}}</ion-checkbox>
+				</div>
 			</div><!-- /.list-card -->
 
 			<div class="list card">
@@ -24,9 +23,11 @@
 			  	</label>
 			</div><!-- /.list-card -->
 
-			<div class="list card">
-				<button ng-click="vm.prepare()" class="button button-calm button-block">Done!</button>
-			</div><!-- /.list card -->
+			<div class="row">
+				<div class="col">
+					<button ng-click="vm.save()" class="button button-calm button-block">Done!</button>
+				</div><!-- /.col -->
+			</div><!-- /.row -->
 				
 		</div><!-- /.setting-panel -->
 
