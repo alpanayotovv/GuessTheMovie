@@ -52,6 +52,8 @@
 					</div>
 				</div><!-- /.search-failed -->
 
+				<ion-infinite-scroll ng-if="vm.loadMore" on-infinite="vm.load()" distance="1%"></ion-infinite-scroll>
+
 			</div><!-- /.search-results -->
 			
 		</div><!-- /.search-screen -->
