@@ -5,10 +5,10 @@
 		.module('app.core')
 		.controller('RoundCtrl', RoundCtrl);
 
-	RoundCtrl.$inject = ['dependencies'];
+	RoundCtrl.$inject = [];
 
 	/* @ngInject */
-	function RoundCtrl(dependencies) {
+	function RoundCtrl() {
 		var vm    = this;
 		
 		vm.time   = 5 * 60 * 1000; // 

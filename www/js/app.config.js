@@ -44,11 +44,24 @@
 					}
 				}
 			})
+			.state('app.teams', {
+				url: '/teams',
+				views: {
+					'menuContent': {
+						templateUrl: 'js/teams/teams.html',
+						controller: 'GameCtrl',
+						controllerAs: 'vm',
+						resolve: {
+							currentGame: getCurrentGame
+						}
+					}
+				}
+			})
 			.state('app.add-team', {
 				url: '/add-team',
 				views: {
 					'menuContent': {
-						templateUrl: 'js/team/add-team.html',
+						templateUrl: 'js/teams/add-team.html',
 						controller: 'TeamCtrl',
 						controllerAs: 'vm'
 					}
@@ -58,7 +71,7 @@
 				url: '/edit-team:teamId',
 				views: {
 					'menuContent': {
-						templateUrl: 'js/team/edit-team.html',
+						templateUrl: 'js/teams/edit-team.html',
 						controller: 'TeamCtrl',
 						controllerAs: 'vm'
 					}
@@ -68,11 +81,19 @@
 				url: '/add-points:teamId',
 				views: {
 					'menuContent': {
-						templateUrl: 'js/team/add-points.html',
+						templateUrl: 'js/teams/add-points.html',
 						controller: 'TeamCtrl',
 						controllerAs: 'vm'
 					}
 				},
+			})
+			.state('app.scores', {
+				url: '/scores',
+				views: {
+					'menuContent': {
+						templateUrl: 'js/scores/scores.html'
+					}
+				}
 			})
 			.state('app.search', {
 				url: '/search',

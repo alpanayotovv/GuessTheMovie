@@ -1,4 +1,4 @@
-<ion-view view-title="Game" class="background-overlay">
+<ion-view view-title="Home" class="background-overlay">
 	<ion-content>
 		<div ng-if="!vm.currentGame.started && vm.currentGame.teams" class="games-stats">
 			
@@ -22,6 +22,9 @@
 		
 		<div class="row">
 			<div class="col">
+				<button ng-if="vm.currentGame.started" ng-click="vm.start()" class="button button-block button-calm">
+					Continue Current Game
+				</button>
 				<button ng-if="!vm.currentGame.started" ng-click="vm.start()" class="button button-block button-calm">
 					Start New Game
 				</button>	

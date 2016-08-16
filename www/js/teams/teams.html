@@ -1,0 +1,42 @@
+<ion-view view-title="Teams" class="background-overlay">
+	<ion-content>
+	
+		<div ng-if="vm.currentGame.started" class="current-game-container">
+
+			<ion-list ng-if="vm.currentGame.teams" type="list-inset">
+				<ion-item ng-repeat="team in vm.currentGame.teams track by $index">
+					<h3>
+						<strong ng-bind="team.name"></strong>
+						<span>Current score: <span ng-bind="team.score"></span></span>
+					</h3>
+
+					<ion-option-button class="button-positive" ui-sref="app.add-points({teamId: $index})">
+						Add Points
+					</ion-option-button>
+					
+					<ion-option-button class="button-calm" ui-sref="app.edit-team({teamId: $index})">
+						Edit
+					</ion-option-button>
+					
+					<ion-option-button class="button-assertive ion-close-circled" ng-click="vm.removeTeam($index)">
+    				</ion-option-button>
+				</ion-item>
+				
+				<ion-item ng-if="!vm.currentGame.teams.length">
+					<h3>Add a team to start!</h3>
+				</ion-item>
+			</ion-list>
+			
+			<div class="row">
+				<div class="col">
+					<button class="button button-block button-calm ion-android-contacts" ui-sref="app.add-team">
+						Add Team
+					</button>
+				</div><!-- /.col -->
+			</div><!-- /.row -->
+			
+		</div><!-- /.current-game-container -->
+		
+	</ion-content>
+
+</ion-view>
