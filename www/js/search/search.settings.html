@@ -1,10 +1,9 @@
 <ion-view view-title="Search Settings" class="background-overlay">
 	<ion-nav-bar class="bar-calm">
 
-		<ion-nav-buttons side="left">
-			<button class="button button-icon button-clear ion-navicon" menu-toggle="left">
-			</button>
-		</ion-nav-buttons>
+		<ion-nav-back-button class="button-clear">
+			<i class="ion-arrow-left-c"></i> Back
+		</ion-nav-back-button>
 		
 	</ion-nav-bar>
 	
@@ -28,8 +27,8 @@
 				</div>
 				
 				<label class="item item-input">
-			    	<input ng-model="vm.year" type="number" placeholder="Movie Year">
-			  	</label>
+					<input ng-model="vm.year" type="number" placeholder="Movie Year">
+				</label>
 			</div><!-- /.list-card -->
 
 			<div class="row">
@@ -37,7 +36,7 @@
 					<button ng-click="vm.save()" class="button button-calm button-block">Done!</button>
 				</div><!-- /.col -->
 			</div><!-- /.row -->
-				
+
 		</div><!-- /.setting-panel -->
 
 	</ion-content>

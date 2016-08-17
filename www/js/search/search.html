@@ -1,63 +1,71 @@
-<ion-view view-title="Find A Movie" class="background-overlay">
-	
-	<ion-nav-bar class="bar-calm">
-
-		<ion-nav-buttons side="left">
-			<button class="button button-icon button-clear ion-navicon" menu-toggle="left">
-			</button>
-		</ion-nav-buttons>
-
-		<ion-nav-buttons side="right">
-			<button class="button button-icon button-clear ion-ios-settings" ui-sref="app.settings"></button>
-		</ion-nav-buttons>
-	</ion-nav-bar>
-
-	<ion-content>
-
-		<div class="search-screen">
-			
-			<div class="list card">
-				<label class="item item-input">
-					<input type="text" ng-model="vm.phrase" placeholder="Search by keywords">
-				</label>
-			</div>
-			
-			<div class="row">
-				<div class="col">
-					<button ng-click="vm.search()" class="button button-block button-calm">Search</button>
-				</div><!-- /.col -->
-			</div><!-- /.row -->
-
-
-			<div ng-if="vm.results" class="search-results">
+<ion-nav-view>
+	<ion-view class="background-overlay">
+		
+		<ion-header-bar>
+			<ion-nav-bar class="bar-calm">
 				
-				<div class="list card" 
-					ng-if="vm.results.success"
-					ng-repeat="movie in vm.results.entries"
-				>
-					<div class="item item-divider" >
-						<p class="right" ng-bind="movie.Year"></p>	
-						<h2 ng-bind="movie.Title"></h2>
-					</div>
+				<ion-nav-title>Find A Movie</ion-nav-title>
 
-					<div class="item item-image">
-						<img ng-if="movie.Poster != 'N/A'" ng-src="{{movie.Poster}}">	
-					</div>
+				<ion-nav-buttons side="left">
+					<button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+					</button>
+				</ion-nav-buttons>
+
+				<ion-nav-buttons side="right">
+					<button class="button button-icon button-clear ion-ios-settings" ui-sref="app.settings"></button>
+				</ion-nav-buttons>
+
+			</ion-nav-bar>
+		</ion-header-bar>
+
+		<ion-content has-header="true">
+
+			<div class="search-screen">
+				
+				<div class="list card">
+					<label class="item item-input">
+						<input type="text" ng-model="vm.phrase" placeholder="Search by keywords">
+					</label>
+				</div>
+				
+				<div class="row">
+					<div class="col">
+						<button ng-click="vm.search()" class="button button-block button-calm">Search</button>
+					</div><!-- /.col -->
+				</div><!-- /.row -->
+
+
+				<div ng-if="vm.results" class="search-results">
 					
-				</div><!-- /.list card -->
-				
-				<div ng-if="vm.results.error" class="search-failed">
-					<div class="card">
-						<div class="item item-text-wrap" ng-bind="vm.results.error">
+					<div class="list card" 
+						ng-if="vm.results.success"
+						ng-repeat="movie in vm.results.entries"
+					>
+						<div class="item item-divider" >
+							<p class="right" ng-bind="movie.Year"></p>	
+							<h2 ng-bind="movie.Title"></h2>
 						</div>
-					</div>
-				</div><!-- /.search-failed -->
 
-				<ion-infinite-scroll ng-if="vm.loadMore" on-infinite="vm.load()" distance="1%"></ion-infinite-scroll>
+						<div class="item item-image">
+							<img ng-if="movie.Poster != 'N/A'" ng-src="{{movie.Poster}}">	
+						</div>
+						
+					</div><!-- /.list card -->
+					
+					<div ng-if="vm.results.error" class="search-failed">
+						<div class="card">
+							<div class="item item-text-wrap" ng-bind="vm.results.error">
+							</div>
+						</div>
+					</div><!-- /.search-failed -->
 
-			</div><!-- /.search-results -->
-			
-		</div><!-- /.search-screen -->
+					<ion-infinite-scroll ng-if="vm.loadMore" on-infinite="vm.load()" distance="1%"></ion-infinite-scroll>
 
-	</ion-content>
-</ion-view>
+				</div><!-- /.search-results -->
+				
+			</div><!-- /.search-screen -->
+
+		</ion-content>
+		
+	</ion-view>
+</ion-nav-view>
