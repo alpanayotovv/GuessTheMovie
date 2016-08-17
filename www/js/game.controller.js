@@ -5,25 +5,35 @@
 		.module('app.core')
 		.controller('GameCtrl', GameCtrl);
 
-	GameCtrl.$inject = ['gameService', 'currentGame'];
+	GameCtrl.$inject = ['gameService', 'storageService'];
 
-	function GameCtrl(gameService, currentGame) {
+	function GameCtrl(gameService, storageService) {
 		var vm         = this;
-		vm.currentGame = currentGame;
+		vm.currentGame = {};
 		vm.start       = start;
 		vm.end         = end;
-		vm.removeTeam  = removeTeam;
+		vm.resume      = resume;
+
+		activate();
+
+		function activate() {
+			storageService.getGame().then( function(game){
+				vm.currentGame = game;
+			});
+		};
 
 		function start() {
-			gameService.start(vm.currentGame);
+			gameService.start();
 		};
 
 		function end() {
-			gameService.end(vm.currentGame);
+			vm.currentGame.started = false;
+			gameService.end();
 		};
 
-		function removeTeam(index) {
-			gameService.removeTeam(index);
-		}
+		function resume() {
+			vm.currentGame.started = start;
+			gameService.resume();
+		};
 	}
 })();

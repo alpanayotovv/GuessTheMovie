@@ -1,10 +1,21 @@
 <ion-view view-title="Teams" class="background-overlay">
+
+	<ion-nav-bar class="bar-calm">
+
+		<ion-nav-buttons side="left">
+			<button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+			</button>
+		</ion-nav-buttons>
+		
+	</ion-nav-bar>
+
+	
 	<ion-content>
 	
-		<div ng-if="vm.currentGame.started" class="current-game-container">
+		<div class="current-game-container">
 
-			<ion-list ng-if="vm.currentGame.teams" type="list-inset">
-				<ion-item ng-repeat="team in vm.currentGame.teams track by $index">
+			<ion-list ng-if="vm.teams.length" type="list-inset">
+				<ion-item ng-repeat="team in vm.teams track by $index">
 					<h3>
 						<strong ng-bind="team.name"></strong>
 						<span>Current score: <span ng-bind="team.score"></span></span>
@@ -22,9 +33,6 @@
     				</ion-option-button>
 				</ion-item>
 				
-				<ion-item ng-if="!vm.currentGame.teams.length">
-					<h3>Add a team to start!</h3>
-				</ion-item>
 			</ion-list>
 			
 			<div class="row">

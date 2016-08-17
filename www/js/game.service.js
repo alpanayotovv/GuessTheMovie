@@ -5,14 +5,15 @@
 		.module('app.core')
 		.service('gameService', gameService);
 
-	gameService.$inject = ['storageService'];
+	gameService.$inject = ['$state', 'storageService'];
 
-	function gameService(storageService) {
+	function gameService($state, storageService) {
 		var newTeamModal;
 
 		var gameService = {
 			addTeam: addTeam,
 			start: start,
+			resume: resume,
 			end: end,
 			removeTeam: removeTeam,
 			getGame: getGame
@@ -34,14 +35,26 @@
 			});
 		};
 
-		function start(game){
-			game.started = true;
-			setGame(game);
+		function start() {
+			getGame().then( function(game) {
+				game = storageService.newGame(true);
+				setGame(game);
+				$state.go('app.teams');
+			});
+		}
+
+		function resume(){
+			getGame().then( function(game) {  
+				game.started = true;
+				setGame(game);
+			});
 		};
 
-		function end(game){
-			game.started = false;
-			setGame(game);
+		function end(){
+			getGame().then( function(game) {
+				game.started = false;
+				setGame(game);
+			});
 		}
 
 		function removeTeam(teamIndex) {

@@ -27,37 +27,35 @@
 	function configure($stateProvider, $urlRouterProvider) {
 		$stateProvider
 			.state('app', {
+				cache: false,
 				url: '',
 				abstract: true,
 				templateUrl: 'templates/menu.html'
 			})
 			.state('app.index', {
+				cache: false,
 				url: '',
 				views: {
 					'menuContent': {
 						templateUrl: 'js/home/home.html',
 						controller: 'GameCtrl',
-						controllerAs: 'vm',
-						resolve: {
-							currentGame: getCurrentGame
-						}
+						controllerAs: 'vm'
 					}
 				}
 			})
 			.state('app.teams', {
+				cache: false,
 				url: '/teams',
 				views: {
 					'menuContent': {
 						templateUrl: 'js/teams/teams.html',
-						controller: 'GameCtrl',
-						controllerAs: 'vm',
-						resolve: {
-							currentGame: getCurrentGame
-						}
+						controller: 'TeamCtrl',
+						controllerAs: 'vm'
 					}
 				}
 			})
 			.state('app.add-team', {
+				cache: false,
 				url: '/add-team',
 				views: {
 					'menuContent': {
@@ -68,6 +66,7 @@
 				},
 			})
 			.state('app.edit-team', {
+				cache: false,
 				url: '/edit-team:teamId',
 				views: {
 					'menuContent': {
@@ -78,6 +77,7 @@
 				},
 			})
 			.state('app.add-points', {
+				cache: false,
 				url: '/add-points:teamId',
 				views: {
 					'menuContent': {
@@ -88,14 +88,18 @@
 				},
 			})
 			.state('app.scores', {
+				cache: false,
 				url: '/scores',
 				views: {
 					'menuContent': {
-						templateUrl: 'js/scores/scores.html'
+						templateUrl: 'js/scores/scores.html',
+						controller: 'GameCtrl',
+						controllerAs: 'vm'
 					}
 				}
 			})
 			.state('app.search', {
+				cache: false,
 				url: '/search',
 				views: {
 					'menuContent': {
@@ -106,6 +110,7 @@
 				},
 			})
 			.state('app.settings', {
+				cache: false,
 				url: '/settings',
 				views: {
 					'menuContent': {
@@ -116,6 +121,7 @@
 				}
 			})
 			.state('app.round', {
+				cache: false,
 				url: '/round',
 				views: {
 					'menuContent': {
@@ -136,5 +142,13 @@
 			return game;
 		});
 	};
+
+	getTeams.$inject = ['storageService'];
+
+	function getTeams(storageService) {
+		return storageService.getGame().then( function(game){
+			return game.teams;
+		});
+	}
 
 })();

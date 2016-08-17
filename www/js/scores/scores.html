@@ -1,5 +1,36 @@
 <ion-view view-title="Scores" class="background-overlay">
+
+	<ion-nav-bar class="bar-calm">
+
+		<ion-nav-buttons side="left">
+			<button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+			</button>
+		</ion-nav-buttons>
+
+	</ion-nav-bar>
+
 	<ion-content>
+
+		<div ng-if="!vm.currentGame.started && vm.currentGame.teams" class="games-stats">
+			
+			<div class="list card">
+				<div class="item item-divider">
+					<h1>Final Score</h1>
+				</div><!-- /.item item-divider -->
+			
+				<ion-list>
+					<ion-item ng-repeat="team in vm.currentGame.teams | orderBy: '-score' track by $index">
+						<h3>
+							<span ng-if="$first && team.score != 0" class="ion-trophy"></span>
+							<strong ng-bind="team.name"></strong>
+							<span>Score: <span ng-bind="team.score"></span></span>
+						</h3>
+					</ion-item>
+				</ion-list>	
+
+			</div><!-- /.row -->
+
+		</div><!-- /.games-stats -->
 	
 		<div ng-if="vm.currentGame.started" class="current-game-container">
 
@@ -13,27 +44,12 @@
 					<ion-option-button class="button-positive" ui-sref="app.add-points({teamId: $index})">
 						Add Points
 					</ion-option-button>
-					
-					<ion-option-button class="button-calm" ui-sref="app.edit-team({teamId: $index})">
-						Edit
-					</ion-option-button>
-					
-					<ion-option-button class="button-assertive ion-close-circled" ng-click="vm.removeTeam($index)">
-    				</ion-option-button>
 				</ion-item>
 				
 				<ion-item ng-if="!vm.currentGame.teams.length">
 					<h3>Add a team to start!</h3>
 				</ion-item>
 			</ion-list>
-			
-			<div class="row">
-				<div class="col">
-					<button class="button button-block button-calm ion-android-contacts" ui-sref="app.add-team">
-						Add Team
-					</button>
-				</div><!-- /.col -->
-			</div><!-- /.row -->
 			
 		</div><!-- /.current-game-container -->
 		

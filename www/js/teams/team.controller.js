@@ -5,9 +5,9 @@
 		.module('app.core')
 		.controller('TeamCtrl', TeamCtrl);
 
-	TeamCtrl.$inject = ['$state', '$stateParams', 'teamService', 'gameService'];
+	TeamCtrl.$inject = ['$state', '$stateParams', 'teamService', 'gameService', 'storageService'];
 	
-	function TeamCtrl($state, $stateParams, teamService, gameService) {
+	function TeamCtrl($state, $stateParams, teamService, gameService, storageService) {
 		var vm = this;
 		
 		vm.teamName;
@@ -16,6 +16,7 @@
 		vm.updateTeam  = updateTeam;
 		vm.addPoints   = addPoints;
 		vm.points      = 0;
+		vm.teams       = [];
 
 		activate();
 
@@ -25,6 +26,10 @@
 					vm.currentTeam = team;
 				});
 			}
+
+			storageService.getGame().then( function(game){
+				vm.teams = game.teams;
+			});
 		};
 
 		function addTeam() {
@@ -33,17 +38,18 @@
 			}
 
 			gameService.addTeam(vm.teamName);
-			$state.go('app.index');
+			$state.go('app.teams');
 		};
 
 		function updateTeam() {
 			teamService.updateTeam(vm.currentTeam.name, vm.currentTeam.score, $stateParams.teamId);		
-			$state.go('app.index');	
+			$state.go('app.teams');	
 		};
 
 		function addPoints() {
 			teamService.updateTeam(vm.currentTeam.name, vm.currentTeam.score + vm.points, $stateParams.teamId);		
-			$state.go('app.index');	
+			$state.go('app.teams');	
 		};
+
 	}
 })();

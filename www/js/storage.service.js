@@ -14,20 +14,20 @@
 			newGame: newGame,
 		};
 
-		var deffered = $q.defer();
-
 		return storage;		
 
 		////////////////
 
 		function get() {
+			var deffered = $q.defer();
 			var game = JSON.parse( $window.localStorage.getItem( 'movieGame') );
 			
 			if ( !game ) {
-				var game = newGame();
+				var game = newGame(false);
 			}
 
 			deffered.resolve(game);
+
 			return deffered.promise;
 		}
 
@@ -35,9 +35,9 @@
 			$window.localStorage.setItem( 'movieGame', JSON.stringify(game));
 		}
 
-		function newGame(){
+		function newGame(started){
 			var game = {
-				started: false,
+				started: started,
 				teams: []
 			};
 
