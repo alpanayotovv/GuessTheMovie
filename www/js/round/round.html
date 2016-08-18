@@ -42,10 +42,9 @@
 
 				<div class="row">
 					<div class="col">
-						<button class="button button-block button-calm">Start!</button>
-						
+						<button ng-click="vm.start()" class="button button-block button-calm">Start!</button>
+						<button ng-click="vm.pause()" class="button button-block button-calm">Pause</button>
 						<button ui-sref="app.search" class="button button-block button-assertive">Pick different movie.</button>
-
 					</div><!-- /.col -->
 				</div><!-- /.row -->
 				
@@ -57,6 +56,10 @@
 				<button class="button button-block button-calm" ui-sref="app.search">Pick A Movie!</button>
 			</div><!-- /.col -->
 		</div><!-- /.row -->
+		
+		<div class="list card">
+			<alp-round-timer time="{{vm.settings.time}}" started="{{vm.started}}"></alp-round-timer>
+		</div><!-- /.list card -->
 		
 	</ion-content>
 

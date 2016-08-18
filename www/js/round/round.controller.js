@@ -15,6 +15,7 @@
 		vm.settings = {};
 		vm.start  = start;
 		vm.pause  = pause;
+		vm.started = false;
 
 		activate();
 
@@ -31,11 +32,11 @@
 		};
 
 		function start() {
-
+			vm.started = true;
 		};
 
 		function pause() {
-
+			vm.started = false;
 		};
 
 		function end() {
