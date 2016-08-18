@@ -5,11 +5,59 @@
 			<button class="button button-icon button-clear ion-navicon" menu-toggle="left">
 			</button>
 		</ion-nav-buttons>
+
+		<ion-nav-buttons side="right">
+			<button class="button button-icon button-clear ion-ios-settings" ui-sref="app.round-settings"></button>
+		</ion-nav-buttons>
 	
 	</ion-nav-bar>
 
 	<ion-content>
+		
+		<div ng-if="vm.movie" class="search-results">
+			<div class="list card">
+				<div class="item item-divider">
+					<h2>
+						You are playing for 
+						<span ng-bind="vm.settings.points"></span> points in 
 
+						<ng-pluralize count="vm.settings.time"
+							when="{
+							'one': '1 minute.',
+							'other': '{} minutes.'}">
+						</ng-pluralize>
+					</h2>
+				</div>
+			</div><!-- /.list card -->	
+					
+			<div class="list card">
+				<div class="item item-divider" >
+					<p class="right" ng-bind="vm.movie.Year"></p>	
+					<h2 ng-bind="vm.movie.Title"></h2>
+				</div>
 
+				<div class="item item-image">
+					<img ng-if="vm.movie.Poster != 'N/A'" ng-src="{{vm.movie.Poster}}">	
+				</div>
+
+				<div class="row">
+					<div class="col">
+						<button class="button button-block button-calm">Start!</button>
+						
+						<button ui-sref="app.search" class="button button-block button-assertive">Pick different movie.</button>
+
+					</div><!-- /.col -->
+				</div><!-- /.row -->
+				
+			</div><!-- /.list card -->
+		</div><!-- /.search-results -->
+
+		<div class="row" ng-if="!vm.movie">
+			<div class="col">
+				<button class="button button-block button-calm" ui-sref="app.search">Pick A Movie!</button>
+			</div><!-- /.col -->
+		</div><!-- /.row -->
+		
 	</ion-content>
+
 </ion-view>

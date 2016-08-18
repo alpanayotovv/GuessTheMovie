@@ -131,6 +131,17 @@
 					}
 				}
 			})
+			.state('app.round-settings', {
+				cache: false,
+				url: '/round-settings',
+				views: {
+					'menuContent': {
+						templateUrl: 'js/round/round.settings.html',
+						controller: 'RoundSettingsCtrl',
+						controllerAs: 'vm'
+					}
+				}
+			})
 
   		$urlRouterProvider.otherwise('/app/index');
 	};

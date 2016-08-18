@@ -1,0 +1,53 @@
+<ion-view view-title="Round Settings" class="background-overlay">
+	<ion-nav-bar class="bar-calm">
+
+		<ion-nav-back-button class="button-clear">
+			<i class="ion-arrow-left-c"></i> Back
+		</ion-nav-back-button>
+		
+	</ion-nav-bar>
+	
+	<ion-content>
+		
+		<div class="setting-panel">
+			
+			<div class="list card">
+				<label class="item item-input item-select">
+					<div class="input-label">
+						Round Time:
+					</div>
+					<select ng-model="vm.settings.time">
+						<option value="1">1 minute</option>
+						<option value="2">2 minutes</option>
+						<option value="3">3 minutes</option>
+						<option value="4">4 minutes</option>
+						<option value="5">5 minutes</option>
+					</select>
+
+				</label>
+
+				<label class="item item-input item-select">
+					<div class="input-label">
+						Points: 
+					</div>
+					<select ng-model="vm.settings.points">
+						<option value="5">5</option>
+						<option value="10">10</option>
+						<option value="15">15</option>
+						<option value="20">20</option>
+					</select>
+
+				</label>
+
+			</div>
+			
+			<div class="row">
+				<div class="col">
+					<button ng-click="vm.save()" class="button button-block button-calm">Save</button>
+				</div><!-- /.col -->
+			</div><!-- /.row -->
+
+		</div><!-- /.setting-panel -->
+
+	</ion-content>
+</ion-view>

@@ -5,9 +5,9 @@
 		.module('app.core')
 		.controller('SearchCtrl', SearchCtrl);
 
-	SearchCtrl.$inject = ['$scope', '$ionicPopup', '$ionicLoading', 'searchService', 'searchSettingsService'];
+	SearchCtrl.$inject = ['$scope', '$state', '$ionicPopup', '$ionicLoading', 'searchService', 'searchSettingsService', 'roundService'];
 
-	function SearchCtrl($scope, $ionicPopup, $ionicLoading, searchService, searchSettingsService) {
+	function SearchCtrl($scope, $state, $ionicPopup, $ionicLoading, searchService, searchSettingsService, roundService) {
 		var vm = this;
 		
 		vm.settings    = {};
@@ -19,6 +19,7 @@
 		vm.pages       = 1;
 		vm.loadMore    = false;
 		vm.search      = search;
+		vm.pick        = pick;
 		vm.load        = load;
 
 		function search() {
@@ -90,6 +91,11 @@
 
 		function getSettings(){
 			return searchSettingsService.get();
+		};
+
+		function pick(index){
+			roundService.setMovie(vm.results.entries[index]);
+			$state.go('app.round');
 		};
 	}
 })();

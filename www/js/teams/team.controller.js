@@ -48,7 +48,7 @@
 
 		function addPoints() {
 			teamService.updateTeam(vm.currentTeam.name, vm.currentTeam.score + vm.points, $stateParams.teamId);		
-			$state.go('app.teams');	
+			$state.go('app.scores');	
 		};
 
 	}

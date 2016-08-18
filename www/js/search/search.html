@@ -39,7 +39,8 @@
 					
 					<div class="list card" 
 						ng-if="vm.results.success"
-						ng-repeat="movie in vm.results.entries"
+						ng-repeat="movie in vm.results.entries track by $index"
+						ng-click="vm.pick($index)"
 					>
 						<div class="item item-divider" >
 							<p class="right" ng-bind="movie.Year"></p>	

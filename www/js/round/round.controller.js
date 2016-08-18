@@ -5,20 +5,30 @@
 		.module('app.core')
 		.controller('RoundCtrl', RoundCtrl);
 
-	RoundCtrl.$inject = [];
+	RoundCtrl.$inject = ['roundService'];
 
-	/* @ngInject */
-	function RoundCtrl() {
+	function RoundCtrl(roundService) {
 		var vm    = this;
 		
-		vm.time   = 5 * 60 * 1000; // 
-		vm.movie  = '';
-		vm.points = 0;
+		vm.time   = ''
+		vm.movie  = false;
+		vm.settings = {};
 		vm.start  = start;
 		vm.pause  = pause;
-		vm.end    = end;
+
+		activate();
 
 		////////////////
+
+		function activate() {
+			roundService.getMovie().then( function(movie) {
+				vm.movie = movie;
+			});
+
+			roundService.getSettings().then( function(settings) {
+				vm.settings = settings;
+			});
+		};
 
 		function start() {
 
@@ -30,6 +40,6 @@
 
 		function end() {
 
-		}
+		};
 	}
 })();
