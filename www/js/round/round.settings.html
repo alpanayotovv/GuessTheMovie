@@ -14,6 +14,22 @@
 			<div class="list card">
 				<label class="item item-input item-select">
 					<div class="input-label">
+						Choose Team: 
+					</div>
+
+					<select ng-model="vm.settings.team">
+						<option ng-repeat="team in vm.teams track by $index"
+								ng-selected="vm.settings.team == $index"
+								value="{{$index}}"
+						>
+							{{team.name}}
+						</option>
+					</select>
+
+				</label>
+
+				<label class="item item-input item-select">
+					<div class="input-label">
 						Round Time:
 					</div>
 					<select ng-model="vm.settings.time">
@@ -38,6 +54,7 @@
 					</select>
 
 				</label>
+
 
 			</div>
 			
