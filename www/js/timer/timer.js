@@ -5,9 +5,9 @@
 	.module('app.core')
 	.directive('alpRoundTimer', alpRoundTimer);
 
-	alpRoundTimer.$inject = ['$timeout', '$interval'];
+	alpRoundTimer.$inject = ['$rootScope', '$timeout', '$interval'];
 
-	function alpRoundTimer($timeout, $interval) {
+	function alpRoundTimer($rootScope, $timeout, $interval) {
 		// Usage:
 		//
 		// Creates:
@@ -19,8 +19,6 @@
 				timeleft: '='
 			},
 			templateUrl: 'js/timer/timer.html',
-			controller: 'RoundCtrl',
-			controllerAs: 'vm',
 			link: link,
 			restrict: 'E'
 		};
@@ -53,6 +51,7 @@
 			function updateTime(){
 				if ( currentCount >= maxCount ) {
 					$interval.cancel(timerInterval);
+					$rootScope.$broadcast('timesUp');
 					return;
 				}
 				

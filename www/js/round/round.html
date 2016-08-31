@@ -60,7 +60,9 @@
 
 				<div class="row">
 					<div class="col">
-						<button ng-click="vm.start()" class="button button-block button-calm">Start!</button>
+						<button ng-if="vm.settings.points" ng-click="vm.start()" class="button button-block button-calm">Start!</button>
+						<button ng-if="!vm.settings.points" ui-sref="app.round-settings" class="button button-block button-calm">Configure Round</button>
+
 						<button ui-sref="app.search" class="button button-block button-assertive">Pick different movie.</button>
 					</div><!-- /.col -->
 				</div><!-- /.row -->

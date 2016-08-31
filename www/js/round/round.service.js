@@ -11,6 +11,7 @@
 		var roundService = {
 			set: set,
 			get: get,
+			reset: reset,
 			setMovie: setMovie,
 			getMovie: getMovie,
 			setSettings: setSettings,
@@ -35,6 +36,11 @@
  
 			deffered.resolve(round);
 			return deffered.promise;
+		};
+
+		function reset() {  
+			var round = newRound();
+			set(round);
 		};
 
 		function setMovie(movie) {

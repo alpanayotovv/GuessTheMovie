@@ -5,9 +5,9 @@
 		.module('app.core')
 		.controller('RoundCtrl', RoundCtrl);
 
-	RoundCtrl.$inject = ['$ionicScrollDelegate', 'roundService'];
+	RoundCtrl.$inject = ['$scope', '$state', '$ionicScrollDelegate', '$ionicPopup', 'roundService'];
 
-	function RoundCtrl($ionicScrollDelegate, roundService) {
+	function RoundCtrl($scope, $state, $ionicScrollDelegate, $ionicPopup, roundService) {
 		var vm    = this;
 		
 		vm.movie       = false;
@@ -18,8 +18,21 @@
 		vm.started     = false;
 		vm.roundStatus = 'new';
 		vm.reset       = reset;
+		vm.end         = end;
 
 		activate();
+
+		$scope.$on('timesUp', function(){
+			vm.started     = false;
+			vm.roundStatus = 'new';
+
+			console.log('here');
+
+			$ionicPopup.alert({
+				title: 'Your Time Is Up',
+				content: 'Sorry, but your time is up. You lost this round.'
+			});
+		});
 
 		////////////////
 
@@ -41,14 +54,22 @@
 		};
 
 		function pause() {
-			vm.started = false;
+			vm.started     = false;
 			vm.roundStatus = 'paused';
 		};
 
 		function end() {
 			vm.started     = false;
 			vm.roundStatus = 'finished';
-			
+
+			$ionicPopup.alert({
+				title: 'Round Won!',
+				content: 'Congratulations! You just won ' + vm.settings.points  + ' points! Add them to your team!'
+			});
+
+			roundService.reset();
+
+			$state.go('app.scores');
 		};
 
 		function reset() {
