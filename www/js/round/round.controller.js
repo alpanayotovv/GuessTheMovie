@@ -26,8 +26,6 @@
 			vm.started     = false;
 			vm.roundStatus = 'new';
 
-			console.log('here');
-
 			$ionicPopup.alert({
 				title: 'Your Time Is Up',
 				content: 'Sorry, but your time is up. You lost this round.'
