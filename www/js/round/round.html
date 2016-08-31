@@ -7,14 +7,32 @@
 		</ion-nav-buttons>
 
 		<ion-nav-buttons side="right">
-			<button class="button button-icon button-clear ion-ios-settings" ui-sref="app.round-settings"></button>
+			<button ng-if="vm.roundStatus == 'new'" class="button button-icon button-clear ion-ios-settings" ui-sref="app.round-settings"></button>
 		</ion-nav-buttons>
 	
 	</ion-nav-bar>
 
 	<ion-content>
+
+		<div class="list card transparent" ng-if="vm.roundStatus != 'new'">
+			<alp-round-timer time="{{vm.settings.time}}" timeleft="vm.timeLeft" started="{{vm.started}}"></alp-round-timer>
+
+			<div class="row">
+				<div class="col">
+					<button ng-if="vm.started" ng-click="vm.pause()" class="button button-block button-calm">Pause</button>
+					<button ng-if="!vm.started" ng-click="vm.start()" class="button button-block button-calm">Start</button>
+					<button ng-click="vm.end()" class="button button-block button-energized">Guessed It!</button>
+				</div><!-- /.col -->
+			</div><!-- /.row -->
+
+			<div class="row">
+				<div class="col">
+					<button ng-click="vm.reset()" class="button button-block button-assertive">Reset Round</button>
+				</div><!-- /.col -->
+			</div><!-- /.row -->
+		</div><!-- /.list card -->
 		
-		<div ng-if="vm.movie" class="search-results">
+		<div ng-if="vm.movie && (vm.roundStatus == 'new')" class="search-results">
 			<div class="list card">
 				<div class="item item-divider">
 					<h2>
@@ -43,7 +61,6 @@
 				<div class="row">
 					<div class="col">
 						<button ng-click="vm.start()" class="button button-block button-calm">Start!</button>
-						<button ng-click="vm.pause()" class="button button-block button-calm">Pause</button>
 						<button ui-sref="app.search" class="button button-block button-assertive">Pick different movie.</button>
 					</div><!-- /.col -->
 				</div><!-- /.row -->
@@ -56,10 +73,6 @@
 				<button class="button button-block button-calm" ui-sref="app.search">Pick A Movie!</button>
 			</div><!-- /.col -->
 		</div><!-- /.row -->
-		
-		<div class="list card">
-			<alp-round-timer time="{{vm.settings.time}}" started="{{vm.started}}"></alp-round-timer>
-		</div><!-- /.list card -->
 		
 	</ion-content>
 

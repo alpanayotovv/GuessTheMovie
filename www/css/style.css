@@ -17,48 +17,32 @@
 
 .ng-hide-add, .ng-hide-remove {
   /* this is required as of 1.3x to properly
-     apply all styling in a show/hide animation */
+  apply all styling in a show/hide animation */
   transition: 0s linear all;
 }
 
 .ng-hide-add-active,
 .ng-hide-remove-active {
-  /* the transition is defined in the active class */
-  transition: 1s linear all;
+	/* the transition is defined in the active class */
+	transition: 1s linear all;
 }
 
-.svg.radial-progress {
-  position: relative;
-  display: inline-block;
+.transparent { background-color: rgba(255,255,255,0.7);  }
+
+.alp-timer { position: relative; }
+.alp-timer .svg.radial-progress { position: relative; display: block; margin: 0 auto; }
+.alp-timer svg { transform: rotate(270deg); display: block; margin: 0 auto; }
+.alp-timer circle { stroke-width: 2em; fill: transparent; transform: rotate(0.1deg); }
+.alp-timer .radial-progress-background { stroke: #ef473a; }
+.alp-timer .radial-progress-cover { stroke: #ffc900; stroke-width: 2.01em; border: 12px solid red;
+	-webkit-transition: all 300ms ease;
+	-moz-transition: all 300ms ease;
+	-ms-transition: all 300ms ease;
+	-o-transition: all 300ms ease;
+	transition: all 300ms ease;
 }
 
-svg {
-  transform: rotate(270deg);
-}
+.alp-timer .radial-progress-center { fill: #11c1f3; }
+.alp-timer .radial-fill { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
 
-circle {
-  stroke-width: 2em;
-  fill: transparent;
-  transform: rotate(0.1deg); // to fix Firefox
-}
-
-.radial-progress-background {
-  stroke: orange;
-}
-
-.radial-progress-cover {
-  stroke: #DEDEDE;
-  stroke-width: 2.01em;
-    border: 12px solid red;
-}
-
-.radial-progress-center {
-  fill: #CCC;
-}
-
-.radial-fill {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
+.time-left { position: absolute; top: 50%; left: 50%; font-size: 18px; text-align: center; transform: translate(-50%, -50%); z-index: 9999; color: #fff; }

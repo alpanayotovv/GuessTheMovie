@@ -1,8 +1,11 @@
-<div class="svg radial-progress">
-	<span>{{timeLeft}}</span>
-	<svg height="10em" width="10em">
-		<circle class="radial-progress-background" r="" cx="5em" cy="5em" fill="transparent" stroke-dasharray="0em" stroke-dashoffset="0em"></circle>
-		<circle class="radial-progress-cover" r="" cx="5em" cy="5em" fill="transparent" stroke-dasharray="0em" stroke-dashoffset="0"></circle>
-		<circle class="radial-progress-center" r="" cx="5em" cy="5em" fill="transparent" stroke-dasharray="0em" stroke-dashoffset="0em"></circle>
-	</svg>
-</div>
+<div class="alp-timer">
+	<div class="svg radial-progress">
+		<svg height="10em" width="10em">
+			<circle class="radial-progress-background" r="" cx="5em" cy="5em" fill="transparent" stroke-dasharray="0em" stroke-dashoffset="0em"></circle>
+			<circle class="radial-progress-cover" r="" cx="5em" cy="5em" fill="transparent" stroke-dasharray="0em" stroke-dashoffset="0"></circle>
+			<circle class="radial-progress-center" r="" cx="5em" cy="5em" fill="transparent" stroke-dasharray="0em" stroke-dashoffset="0em"></circle>
+		</svg>
+	</div>
+
+	<span class="time-left">{{timeleft | timerFilter}}</span>
+</div><!-- /.alp-timer -->
