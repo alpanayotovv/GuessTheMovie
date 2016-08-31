@@ -24,7 +24,13 @@
 		};
 
 		function get() {
-			return JSON.parse($window.localStorage.getItem('movieSearchSettings'));
+			var settings = JSON.parse($window.localStorage.getItem('movieSearchSettings'));
+
+			if ( settings === null ) {
+				settings = {};
+			} 
+
+			return settings;
 		};
 	}
 })();
