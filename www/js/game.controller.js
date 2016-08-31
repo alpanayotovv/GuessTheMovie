@@ -5,9 +5,9 @@
 		.module('app.core')
 		.controller('GameCtrl', GameCtrl);
 
-	GameCtrl.$inject = ['gameService', 'storageService'];
+	GameCtrl.$inject = ['$state', 'gameService', 'storageService'];
 
-	function GameCtrl(gameService, storageService) {
+	function GameCtrl($state, gameService, storageService) {
 		var vm         = this;
 		vm.currentGame = {};
 		vm.start       = start;
@@ -29,6 +29,7 @@
 		function end() {
 			vm.currentGame.started = false;
 			gameService.end();
+			$state.go('app.scores');
 		};
 
 		function resume() {
