@@ -36,7 +36,7 @@
 				<div class="item item-divider">
 					<button ng-if="!vm.settings.points" ui-sref="app.round-settings" class="button button-block button-calm">Configure Round</button>
 					<h2 ng-if="vm.settings.points">
-						You are playing for 
+						<span ng-bind="vm.team.name"></span> is playing for 
 						<span ng-bind="vm.settings.points"></span> points in 
 
 						<ng-pluralize count="vm.settings.time"
