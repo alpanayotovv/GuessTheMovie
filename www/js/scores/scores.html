@@ -15,7 +15,7 @@
 			
 			<div class="list card">
 				<div class="item item-divider">
-					<h1>Final Score</h1>
+					<h1 class="text-center">Final Score</h1>
 				</div><!-- /.item item-divider -->
 			
 				<ion-list>
@@ -27,7 +27,14 @@
 						</h3>
 					</ion-item>
 				</ion-list>	
-
+			</div><!-- /.row -->
+			
+			<div class="row">
+				<div class="col">
+					<button ui-sref="app.index" class="button button-block button-calm">
+						Home
+					</button>
+				</div><!-- /.col -->
 			</div><!-- /.row -->
 
 		</div><!-- /.games-stats -->
@@ -49,7 +56,16 @@
 				<ion-item ng-if="!vm.currentGame.teams.length">
 					<h3>Add a team to start!</h3>
 				</ion-item>
+
 			</ion-list>
+			
+			<div class="row">
+				<div class="col">
+					<button ui-sref="app.round" class="button button-block button-calm">
+						New Round
+					</button>
+				</div><!-- /.col -->
+			</div><!-- /.row -->
 			
 		</div><!-- /.current-game-container -->
 		

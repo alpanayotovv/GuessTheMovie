@@ -40,6 +40,8 @@
 						<button class="button button-block button-calm ion-android-contacts" ui-sref="app.add-team">
 							Add Team
 						</button>
+
+						<button ng-if="vm.teams.length" ui-sref="app.round" class="button-block button-calm button">New Round</button>
 					</div><!-- /.col -->
 				</div><!-- /.row -->
 				
