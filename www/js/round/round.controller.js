@@ -24,8 +24,7 @@
 		activate();
 
 		$scope.$on('timesUp', function(){
-			vm.started     = false;
-			vm.roundStatus = 'new';
+			vm.reset();
 
 			$ionicPopup.alert({
 				title: 'Your Time Is Up',
@@ -54,7 +53,7 @@
 		};
 
 		function start() {
-			vm.started = true;
+			vm.started     = true;
 			vm.roundStatus = 'started';
 			$ionicScrollDelegate.scrollTop();
 		};

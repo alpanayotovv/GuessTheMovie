@@ -32,6 +32,7 @@
 			var radius        = 3;
 			var circumference = 2 * radius * Math.PI; 
 			var els           = document.querySelectorAll('circle');
+			var element       = document.querySelector('.radial-progress-center');
 			
 			Array.prototype.forEach.call(els, function (el) {
 				el.setAttribute('stroke-dasharray', circumference + 'em');
@@ -39,9 +40,8 @@
 			});
 
 			scope.$watch( 'started', function(){
-
 				if ( attrs.started == 'true' ) {
-					document.querySelector('.radial-progress-center').setAttribute('r', (radius - 0.01 + 'em'));
+					element.setAttribute('r', (radius - 0.01 + 'em'));
 					timerInterval = $interval( updateTime, 1000 );
 				} else {
 					$interval.cancel(timerInterval);
@@ -49,18 +49,21 @@
 			});
 
 			function updateTime(){
+				var element = document.querySelector('.radial-progress-cover');
+
 				if ( currentCount >= maxCount ) {
 					$interval.cancel(timerInterval);
 					$rootScope.$broadcast('timesUp');
 					return;
 				}
-				
-				var offset = -(circumference / maxCount) * currentCount + 'em';
-				
-				document.querySelector('.radial-progress-cover').setAttribute('stroke-dashoffset', offset);
-				currentCount++;
 
-				scope.timeleft--;	
+				if ( element ) {
+					var offset = -(circumference / maxCount) * currentCount + 'em';
+					element.setAttribute('stroke-dashoffset', offset);
+					
+					currentCount++;
+					scope.timeleft--;	
+				}
 			}
 		};
 	}
