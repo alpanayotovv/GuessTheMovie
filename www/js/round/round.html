@@ -24,9 +24,9 @@
 				</div><!-- /.col -->
 			</div><!-- /.row -->
 
-			<div class="row">
+			<div class="row" ng-if="!vm.started">
 				<div class="col">
-					<button ng-click="vm.reset()" class="button button-block button-assertive">Reset Round</button>
+					<button ng-click="vm.resetRound()" class="button button-block button-assertive">Reset Round</button>
 				</div><!-- /.col -->
 			</div><!-- /.row -->
 		</div><!-- /.list card -->

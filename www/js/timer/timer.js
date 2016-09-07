@@ -26,6 +26,7 @@
 		return directive;
 
 		function link(scope, element, attrs) {
+
 			var timerInterval;
 			var maxCount      = attrs.time * 60;
 			var currentCount  = 1;
@@ -64,6 +65,10 @@
 					currentCount++;
 					scope.timeleft--;	
 				}
+			}
+
+			function resetSVG(){
+				document.querySelector('.radial-progress-cover').setAttribute('stroke-dashoffset', '0em');
 			}
 		};
 	}

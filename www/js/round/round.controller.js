@@ -5,9 +5,9 @@
 		.module('app.core')
 		.controller('RoundCtrl', RoundCtrl);
 
-	RoundCtrl.$inject = ['$scope', '$state', '$ionicScrollDelegate', '$ionicPopup', 'roundService', 'teamService'];
+	RoundCtrl.$inject = ['$scope', '$state', '$ionicScrollDelegate', '$ionicPopup', '$ionicNavBarDelegate', 'roundService', 'teamService'];
 
-	function RoundCtrl($scope, $state, $ionicScrollDelegate, $ionicPopup, roundService, teamService) {
+	function RoundCtrl($scope, $state, $ionicScrollDelegate, $ionicPopup, $ionicNavBarDelegate, roundService, teamService) {
 		var vm    = this;
 		
 		vm.movie       = false;
@@ -18,18 +18,22 @@
 		vm.start       = start;
 		vm.pause       = pause;
 		vm.started     = false;
-		vm.reset       = reset;
+		vm.resetRound  = resetRound;
 		vm.end         = end;
 
 		activate();
 
 		$scope.$on('timesUp', function(){
-			vm.reset();
+			vm.resetRound();
 
 			$ionicPopup.alert({
 				title: 'Your Time Is Up',
 				content: 'Sorry, but your time is up. You lost this round.'
 			});
+		});
+
+		$scope.$on('$ionicView.enter', function(e) {
+			$ionicNavBarDelegate.showBar(true);
 		});
 
 		////////////////
@@ -79,10 +83,8 @@
 			$state.go('app.scores');
 		};
 
-		function reset() {
-			vm.started     = false;
-			vm.roundStatus = 'new';
-			vm.timeLeft    = vm.settings.time * 60;
+		function resetRound() {
+			$state.reload();
 		};
 	}
 })();
