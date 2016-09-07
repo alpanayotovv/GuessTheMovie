@@ -20,12 +20,13 @@
 
 		function search(searchSettings) {
 			// Check length in order to prevent API error
-			var types = searchSettings.type.split(',');
-			
-			if ( types.length >=3 ) {
-				searchSettings.type = '';
+			if ( searchSettings.type ) {
+				var types = searchSettings.type.split(',');
+				
+				if ( types.length >=3 ) {
+					searchSettings.type = '';
+				}
 			}
-
 
 			var queryString = $httpParamSerializer(searchSettings);
 			var url = END_POINT + queryString;
