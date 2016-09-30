@@ -95,7 +95,7 @@
 
 		function pick(index){
 			roundService.setMovie(vm.results.entries[index]);
-			$state.go('app.round');
+			$state.go('app.round-settings');
 		};
 	}
 })();
